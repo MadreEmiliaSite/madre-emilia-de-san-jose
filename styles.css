@@ -17,20 +17,20 @@
     --color-text: #333333;
     --color-text-light: #666666;
     --color-text-muted: #999999;
-    
+
     /* Fuentes */
     --font-primary: 'Poppins', sans-serif;
     --font-secondary: 'Playfair Display', serif;
     --font-elegant: 'Cormorant Garamond', serif;
-    
+
     /* Tamaños */
     --header-height: 80px;
     --container-width: 1200px;
-    
+
     /* Transiciones */
     --transition: all 0.3s ease;
     --transition-slow: all 0.5s ease;
-    
+
     /* Sombras */
     --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -223,9 +223,11 @@ img {
     color: var(--color-white);
 }
 
-.nav__logo-icon {
-    font-size: 24px;
-    color: var(--color-secondary);
+.nav__logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 0%;
 }
 
 .nav__logo-text {
@@ -489,19 +491,46 @@ img {
 }
 
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
 /* ========================================
@@ -1255,8 +1284,15 @@ img {
 }
 
 @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(79, 195, 247, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(79, 195, 247, 0); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(79, 195, 247, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(79, 195, 247, 0);
+    }
 }
 
 .causa__step-content strong {
@@ -1438,7 +1474,7 @@ img {
     margin-bottom: 20px;
 }
 
-.contacto__info > p {
+.contacto__info>p {
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 30px;
 }
@@ -1646,69 +1682,69 @@ img {
     .section__title {
         font-size: 36px;
     }
-    
+
     .hero__title {
         font-size: 52px;
     }
-    
+
     .biografia__content {
         grid-template-columns: 1fr;
     }
-    
+
     .biografia__image-container {
         position: relative;
         top: 0;
         max-width: 400px;
         margin: 0 auto;
     }
-    
+
     .huellas__container {
         grid-template-columns: 1fr;
     }
-    
+
     .huellas__map {
         height: 400px;
     }
-    
+
     .virtudes__grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .galeria__grid {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
     }
-    
+
     .galeria__item--large,
     .galeria__item--tall {
         grid-column: span 1;
         grid-row: span 1;
     }
-    
+
     .galeria__item {
         height: 250px;
     }
-    
+
     .impacto__grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .causa__content {
         grid-template-columns: 1fr;
     }
-    
+
     .oracion__content {
         grid-template-columns: 1fr;
     }
-    
+
     .congregacion__content {
         grid-template-columns: 1fr;
     }
-    
+
     .contacto__grid {
         grid-template-columns: 1fr;
     }
-    
+
     .footer__top {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1719,7 +1755,7 @@ img {
     :root {
         --header-height: 70px;
     }
-    
+
     /* Header móvil */
     .nav__menu {
         position: fixed;
@@ -1734,32 +1770,32 @@ img {
         box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
         overflow-y: auto;
     }
-    
+
     .nav__menu.active {
         right: 0;
     }
-    
+
     .nav__list {
         flex-direction: column;
         align-items: flex-start;
         gap: 0;
     }
-    
+
     .nav__item {
         width: 100%;
     }
-    
+
     .nav__link {
         display: block;
         padding: 15px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         font-size: 16px;
     }
-    
+
     .nav__link::after {
         display: none;
     }
-    
+
     .nav__dropdown-menu {
         position: static;
         opacity: 1;
@@ -1770,84 +1806,84 @@ img {
         padding-left: 20px;
         display: none;
     }
-    
+
     .nav__dropdown.active .nav__dropdown-menu {
         display: block;
     }
-    
+
     .nav__dropdown-link {
         color: rgba(255, 255, 255, 0.7);
         padding: 10px 0;
     }
-    
+
     .nav__toggle,
     .nav__close {
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    
+
     .nav__close {
         position: absolute;
         top: 25px;
         right: 25px;
     }
-    
+
     /* Hero móvil */
     .hero__title {
         font-size: 36px;
     }
-    
+
     .hero__subtitle {
         font-size: 20px;
     }
-    
+
     .hero__description {
         font-size: 16px;
     }
-    
+
     .hero__buttons {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .hero__button {
         width: 100%;
         text-align: center;
     }
-    
+
     /* Secciones móvil */
     .section {
         padding: 60px 0;
     }
-    
+
     .section__title {
         font-size: 28px;
     }
-    
+
     .section__description {
         font-size: 16px;
     }
-    
+
     /* Quote móvil */
     .main-quote p {
         font-size: 22px;
     }
-    
+
     .quote-mark {
         font-size: 80px;
     }
-    
+
     /* Virtudes móvil */
     .virtudes__grid {
         grid-template-columns: 1fr;
     }
-    
+
     /* Timeline móvil */
     .timeline__line {
         left: 25px;
     }
-    
+
     .timeline__item,
     .timeline__item:nth-child(odd),
     .timeline__item:nth-child(even) {
@@ -1855,57 +1891,57 @@ img {
         padding-left: 70px;
         padding-right: 0;
     }
-    
+
     .timeline__marker {
         left: 25px;
         transform: translateX(-50%);
         width: 40px;
         height: 40px;
     }
-    
+
     .timeline__content,
     .timeline__item:nth-child(odd) .timeline__content {
         text-align: left;
     }
-    
+
     /* Galería móvil */
     .galeria__grid {
         grid-template-columns: 1fr;
     }
-    
+
     .galeria__item {
         height: 200px;
     }
-    
+
     /* Impacto móvil */
     .impacto__grid {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-    
+
     .impacto__item {
         padding: 25px;
     }
-    
+
     .impacto__number {
         font-size: 48px;
     }
-    
+
     /* Frases móvil */
     .frase-card__text {
         font-size: 20px;
     }
-    
+
     .frases__container {
         min-height: 350px;
     }
-    
+
     /* Footer móvil */
     .footer__top {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    
+
     .footer__form {
         justify-content: center;
     }
@@ -1916,24 +1952,24 @@ img {
     .hero__title {
         font-size: 28px;
     }
-    
+
     .hero__subtitle {
         font-size: 18px;
     }
-    
+
     .hero__badge {
         font-size: 10px;
         padding: 6px 20px;
     }
-    
+
     .section__title {
         font-size: 24px;
     }
-    
+
     .biografia__subtitle {
         font-size: 22px;
     }
-    
+
     .impacto__number {
         font-size: 40px;
     }

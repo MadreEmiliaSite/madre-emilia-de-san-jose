@@ -1625,6 +1625,13 @@ img {
     transform: scale(1.2);
 }
 
+.contacto__social-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
 /* Contacto centrado sin formulario */
 .contacto__info-centered {
     max-width: 700px;

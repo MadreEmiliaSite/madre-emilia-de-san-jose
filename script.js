@@ -495,4 +495,53 @@ document.addEventListener('DOMContentLoaded', function() {
     createParticles();
     
     console.log('✝ Página de la Venerable Madre Emilia de San José cargada correctamente');
+
+    // ===== MODALES DE VIRTUDES =====
+const virtudButtons = document.querySelectorAll('.virtud-card__btn');
+const virtudModals = document.querySelectorAll('.virtud-modal');
+
+// Abrir modal
+virtudButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modalId = button.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+
+// Cerrar modal con botón X
+virtudModals.forEach(modal => {
+    const closeBtn = modal.querySelector('.virtud-modal__close');
+    const overlay = modal.querySelector('.virtud-modal__overlay');
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+    
+    // Cerrar modal al hacer clic en el overlay
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+});
+
+// Cerrar modal con tecla Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        virtudModals.forEach(modal => {
+            if (modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
 });

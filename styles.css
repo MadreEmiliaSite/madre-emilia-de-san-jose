@@ -1063,84 +1063,115 @@ html, body {
 }
 
 /* Responsive modal - Móvil */
-@media screen and (max-width: 576px) {
-    .virtud-modal {
-        align-items: flex-end;
-    }
-
-    .virtud-modal__content {
-        width: 100%;
+@media screen and (max-width: 768px) {
+    .huellas__map-wrapper {
+        padding: 20px;
         max-width: 100%;
-        max-height: 85vh;
-        border-radius: 20px 20px 0 0;
-        animation: modalSlideUp 0.3s ease;
     }
-
-    @keyframes modalSlideUp {
-        from {
-            opacity: 0;
-            transform: translateY(100%);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    
+    .mapa-venezuela {
+        width: 100%;
     }
-
-    .virtud-modal__header {
-        padding: 20px 15px;
-        position: sticky;
-        top: 0;
-        z-index: 10;
+    
+    .mapa-venezuela .mapsvg {
+        width: 100%;
+        height: auto;
     }
-
-    .virtud-modal__icon {
+    
+    .map-legend {
+        margin-top: 25px;
+        padding: 20px;
+    }
+    
+    .map-legend h4 {
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .legend-item {
+        justify-content: flex-start;
+        font-size: 13px;
+    }
+    
+    /* Modal en móvil */
+    .huellas-modal {
+        padding: 10px;
+    }
+    
+    .huellas-modal__content {
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: 15px;
+    }
+    
+    .huellas-modal__header {
+        padding: 30px 20px 20px;
+    }
+    
+    .huellas-modal__title {
+        font-size: 24px;
+        padding-right: 40px;
+    }
+    
+    .huellas-modal__close {
+        top: 15px;
+        right: 15px;
         width: 40px;
         height: 40px;
     }
-
-    .virtud-modal__title {
-        font-size: 18px;
-        line-height: 1.3;
+    
+    .huellas-modal__divider {
+        margin: 0 20px;
     }
+    
+    .huellas-modal__body {
+        padding: 20px;
+    }
+    
+    .huellas-modal__lugar-title {
+        font-size: 16px;
+    }
+    
+    .huellas-modal__lugar-desc {
+        font-size: 14px;
+    }
+}
 
-    .virtud-modal__close {
-        top: 15px;
-        right: 15px;
-        width: 35px;
-        height: 35px;
+@media screen and (max-width: 480px) {
+    .huellas__map-wrapper {
+        padding: 15px;
+        border-radius: 15px;
+    }
+    
+    .map-legend {
+        padding: 15px;
+    }
+    
+    .map-legend h4 {
+        font-size: 13px;
+    }
+    
+    .legend-item {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+    
+    .legend-marker {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .huellas-modal__title {
         font-size: 20px;
     }
-
-    .virtud-modal__body {
-        padding: 20px 15px 30px;
-        max-height: calc(85vh - 80px);
+    
+    .huellas-modal__lugar {
+        margin-bottom: 20px;
     }
-
-    .virtud-modal__body h4 {
-        font-size: 16px;
-        margin: 20px 0 12px 0;
-    }
-
-    .virtud-modal__body p {
-        font-size: 14px;
-        line-height: 1.7;
-    }
-
-    .virtud-modal__body ul {
-        margin: 8px 0 15px 15px;
-    }
-
-    .virtud-modal__body ul li {
-        font-size: 13px;
-        line-height: 1.7;
-        margin-bottom: 6px;
-    }
-
-    .virtud-modal__quote {
-        padding: 12px 15px;
+    
+    .huellas-modal__lugar-title {
         font-size: 15px;
-        margin: 15px 0;
     }
 }
 

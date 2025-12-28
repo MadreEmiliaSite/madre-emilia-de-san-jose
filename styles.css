@@ -1865,7 +1865,10 @@ html, body {
 }
 
 .contacto__icon {
-    font-size: 24px;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .contacto__item strong {
@@ -1955,7 +1958,7 @@ html, body {
 }
 
 .footer__social a:hover img {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .contacto__social-link {
@@ -2094,7 +2097,7 @@ html, body {
 }
 
 .footer__social a:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .footer__bottom {
@@ -2436,4 +2439,34 @@ html, body {
 .novena__download-btn:hover {
     background-color: var(--color-secondary-dark);
     transform: translateY(-2px);
+}
+
+/* Iconos en sección congregación */
+.congregacion__icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.congregacion__list li {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
+/* Iconos en footer */
+.footer__icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 1px;
+}
+
+.footer__contact ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

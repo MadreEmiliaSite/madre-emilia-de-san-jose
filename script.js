@@ -544,4 +544,187 @@ document.addEventListener('keydown', (e) => {
         });
     }
 });
+
+// ===== MAPA INTERACTIVO DE VENEZUELA =====
+
+// Nombres de TODAS las diócesis (para mostrar tooltip en todas)
+const nombresDiocesis = {
+    'diocesis-caracas': 'Arquidiócesis de Caracas',
+    'diocesis-la-guaira': 'Diócesis de La Guaira',
+    'diocesis-puerto-ayacucho': 'Diócesis de Puerto Ayacucho',
+    'diocesis-barcelona': 'Diócesis de Barcelona',
+    'diocesis-san-fernando': 'Diócesis de San Fernando de Apure',
+    'diocesis-maracay': 'Diócesis de Maracay',
+    'diocesis-barinas': 'Diócesis de Barinas',
+    'diocesis-ciudad-bolivar': 'Diócesis de Ciudad Bolívar',
+    'diocesis-valencia': 'Diócesis de Valencia',
+    'diocesis-san-carlos': 'Diócesis de San Carlos',
+    'diocesis-tucupita': 'Diócesis de Tucupita',
+    'diocesis-coro': 'Diócesis de Coro',
+    'diocesis-calabozo': 'Diócesis de Calabozo',
+    'diocesis-barquisimeto': 'Arquidiócesis de Barquisimeto',
+    'diocesis-merida': 'Arquidiócesis de Mérida',
+    'diocesis-los-teques': 'Diócesis de Los Teques',
+    'diocesis-maturin': 'Diócesis de Maturín',
+    'diocesis-margarita': 'Diócesis de Margarita',
+    'diocesis-guanare': 'Diócesis de Guanare',
+    'diocesis-cumana': 'Diócesis de Cumaná',
+    'diocesis-san-cristobal': 'Diócesis de San Cristóbal',
+    'diocesis-trujillo': 'Diócesis de Trujillo',
+    'diocesis-san-felipe': 'Diócesis de San Felipe',
+    'diocesis-maracaibo': 'Arquidiócesis de Maracaibo'
+};
+
+// Datos completos solo para diócesis con información
+const diocesisData = {
+    'diocesis-caracas': {
+        tituloModal: '<span class="huellas-modal__title-highlight">Arquidiócesis de</span> Caracas',
+        lugares: [
+            {
+                titulo: 'Lugar de Nacimiento',
+                fecha: '7 de diciembre de 1858',
+                descripcion: 'Emilia Chapellín Istúriz nació en Caracas, en el seno de una familia católica ejemplar. Fue la novena de doce hijos.'
+            },
+            {
+                titulo: 'Catedral de Caracas',
+                fecha: '12 de enero de 1859',
+                descripcion: 'A los 36 días de nacida recibió el Sacramento del Bautismo en la Catedral de Caracas.'
+            },
+            {
+                titulo: 'Asilo de la Providencia',
+                fecha: '15 de enero de 1892',
+                descripcion: 'Fundó en Caracas el Asilo de la Providencia, segunda casa de la Congregación, en condiciones de pobreza heroica.'
+            }
+        ]
+    },
+    'diocesis-la-guaira': {
+        tituloModal: '<span class="huellas-modal__title-highlight">Diócesis de</span> La Guaira',
+        lugares: [
+            {
+                titulo: 'Hospital San José de Maiquetía',
+                fecha: '22 de abril de 1888',
+                descripcion: 'Se inauguró el Hospital de San José, donde Emilia comenzó su servicio a los enfermos más necesitados.'
+            },
+            {
+                titulo: 'Fundación de la Congregación',
+                fecha: '25 de septiembre de 1889',
+                descripcion: 'Junto al Padre Santiago Machado, fundó la Congregación de Hermanitas de los Pobres de Maiquetía, primera Congregación religiosa venezolana.'
+            },
+            {
+                titulo: 'Capilla del Hospital',
+                fecha: '30 de agosto de 1890',
+                descripcion: 'Se instaló el Santísimo Sacramento en la capilla, centro de la vida espiritual de la comunidad.'
+            },
+            {
+                titulo: 'Macuto - Lugar de Fallecimiento',
+                fecha: '18 de enero de 1893',
+                descripcion: 'Falleció durante la Misa, momentos después de recibir la Santa Comunión, a los 34 años de edad. Murió en ejercicio actual de amor de Dios.'
+            }
+        ]
+    }
+};
+
+// Elementos del DOM
+const tooltip = document.getElementById('map-tooltip');
+const tooltipText = tooltip ? tooltip.querySelector('.map__tooltip-text') : null;
+const modal = document.getElementById('huellas-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalBody = document.getElementById('modal-body');
+const modalClose = document.getElementById('modal-close');
+const modalOverlay = modal ? modal.querySelector('.huellas-modal__overlay') : null;
+
+// Diócesis que tienen información completa (pueden abrir modal)
+const diocesisConInfo = ['diocesis-caracas', 'diocesis-la-guaira'];
+
+// Obtener TODAS las diócesis del mapa
+const todasLasDiocesis = document.querySelectorAll('[id^="diocesis-"]');
+
+// Inicializar eventos para TODAS las diócesis
+todasLasDiocesis.forEach(diocesis => {
+    const id = diocesis.id;
+    const nombre = nombresDiocesis[id] || id.replace('diocesis-', '').replace(/-/g, ' ');
+    
+    // Evento hover - mostrar tooltip para TODAS
+    diocesis.addEventListener('mouseenter', (e) => {
+        if (tooltipText && tooltip) {
+            tooltipText.textContent = nombre;
+            tooltip.classList.add('visible');
+        }
+        if (diocesisConInfo.includes(id)) {
+            diocesis.classList.add('active');
+        }
+    });
+    
+    // Evento mousemove - mover tooltip (posición fija al cursor)
+    diocesis.addEventListener('mousemove', (e) => {
+        if (tooltip) {
+            tooltip.style.left = e.clientX + 'px';
+            tooltip.style.top = (e.clientY - 15) + 'px';
+        }
+    });
+    
+    // Evento mouseleave - ocultar tooltip
+    diocesis.addEventListener('mouseleave', () => {
+        if (tooltip) {
+            tooltip.classList.remove('visible');
+        }
+        diocesis.classList.remove('active');
+    });
+    
+    // Evento click - solo para diócesis con información
+    if (diocesisConInfo.includes(id)) {
+        diocesis.style.cursor = 'pointer';
+        
+        diocesis.addEventListener('click', () => {
+            const data = diocesisData[id];
+            if (data && modal) {
+                // Llenar el título
+                modalTitle.innerHTML = data.tituloModal;
+                
+                // Llenar el contenido
+                let contenidoHTML = '';
+                data.lugares.forEach(lugar => {
+                    contenidoHTML += `
+                        <div class="huellas-modal__lugar">
+                            <h3 class="huellas-modal__lugar-title">${lugar.titulo}</h3>
+                            <p class="huellas-modal__lugar-fecha">${lugar.fecha}</p>
+                            <p class="huellas-modal__lugar-desc">${lugar.descripcion}</p>
+                        </div>
+                    `;
+                });
+                modalBody.innerHTML = contenidoHTML;
+                
+                // Mostrar modal
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    }
+});
+
+// Cerrar modal con botón X
+if (modalClose) {
+    modalClose.addEventListener('click', cerrarModalHuellas);
+}
+
+// Cerrar modal al hacer clic en overlay
+if (modalOverlay) {
+    modalOverlay.addEventListener('click', cerrarModalHuellas);
+}
+
+// Cerrar modal con tecla Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+        cerrarModalHuellas();
+    }
+});
+
+function cerrarModalHuellas() {
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+console.log('✓ Mapa de Venezuela inicializado correctamente');
 });

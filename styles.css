@@ -2470,3 +2470,343 @@ html, body {
     align-items: center;
     gap: 10px;
 }
+
+/* ========================================
+   MAPA DE VENEZUELA - HUELLAS
+   ======================================== */
+
+.huellas__container {
+    display: flex;
+    justify-content: center;
+}
+
+.huellas__map-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--color-white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow);
+    margin: 0 auto;
+}
+
+/* Contenedor del mapa */
+.mapa-venezuela {
+    width: 100%;
+    position: relative;
+}
+
+.mapa-venezuela .mapsvg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+/* Estilos base para todas las diócesis */
+.mapa-venezuela path[id^="diocesis-"] {
+    fill: #2075c0;
+    stroke: #ffffff;
+    stroke-width: 0.5;
+    cursor: default;
+    transition: all 0.3s ease;
+}
+
+/* Diócesis con datos (activas) - Color dorado */
+#diocesis-caracas,
+#diocesis-la-guaira {
+    fill: var(--color-accent) !important;
+    cursor: pointer;
+}
+
+/* Hover en diócesis activas - Cambia a cyan */
+#diocesis-caracas:hover,
+#diocesis-la-guaira:hover,
+#diocesis-caracas.active,
+#diocesis-la-guaira.active {
+    fill: #00e4f6 !important;
+}
+
+/* Otras diócesis - hover sutil */
+.mapa-venezuela path[id^="diocesis-"]:not(#diocesis-caracas):not(#diocesis-la-guaira):hover {
+    fill: #4691d2;
+}
+
+/* ===== TOOLTIP del mapa ===== */
+.map__tooltip {
+    position: fixed;
+    background-color: #00d4e6;
+    color: var(--color-primary);
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+    z-index: 1000;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0, 212, 230, 0.4);
+    transform: translate(-50%, -100%);
+}
+
+.map__tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.map__tooltip svg {
+    flex-shrink: 0;
+}
+
+/* ===== LEYENDA ===== */
+.map-legend {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: var(--color-white);
+    border-radius: 15px;
+    box-shadow: var(--shadow-sm);
+}
+
+.map-legend h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--color-text-light);
+}
+
+.legend-item:last-child {
+    margin-bottom: 0;
+}
+
+.legend-marker {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-marker--active {
+    background-color: var(--color-accent);
+}
+
+.legend-marker--other {
+    background-color: #2075c0;
+}
+
+/* ========================================
+   MODAL DE HUELLAS
+   ======================================== */
+.huellas-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.huellas-modal.active {
+    display: flex;
+}
+
+.huellas-modal__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 42, 74, 0.9);
+    backdrop-filter: blur(5px);
+}
+
+.huellas-modal__content {
+    position: relative;
+    background: var(--color-white);
+    width: 100%;
+    max-width: 80%;
+    max-height: 85vh;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+    animation: modalZoomIn 0.3s ease;
+}
+
+@keyframes modalZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.huellas-modal__close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    border: none;
+    border-radius: 50%;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.huellas-modal__close:hover {
+    background: var(--color-secondary);
+    transform: rotate(90deg);
+}
+
+.huellas-modal__header {
+    padding: 50px 50px 30px;
+}
+
+.huellas-modal__title {
+    font-family: var(--font-secondary);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin: 0;
+    padding-right: 60px;
+}
+
+.huellas-modal__title-highlight {
+    color: var(--color-text-muted);
+    font-weight: 400;
+}
+
+.huellas-modal__divider {
+    height: 1px;
+    background: var(--color-gray);
+    margin: 0 50px;
+}
+
+.huellas-modal__body {
+    padding: 30px 50px 50px;
+    max-height: calc(85vh - 200px);
+    overflow-y: auto;
+}
+
+/* Lugares dentro del modal */
+.huellas-modal__lugar {
+    margin-bottom: 30px;
+}
+
+.huellas-modal__lugar:last-child {
+    margin-bottom: 0;
+}
+
+.huellas-modal__lugar-title {
+    font-family: var(--font-secondary);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.huellas-modal__lugar-fecha {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.huellas-modal__lugar-desc {
+    font-size: 15px;
+    color: var(--color-text-light);
+    line-height: 1.7;
+}
+
+/* Responsive Modal */
+@media screen and (max-width: 768px) {
+    .huellas-modal {
+        padding: 10px;
+    }
+    
+    .huellas-modal__content {
+        max-height: 90vh;
+    }
+    
+    .huellas-modal__header {
+        padding: 40px 30px 20px;
+    }
+    
+    .huellas-modal__title {
+        font-size: 28px;
+        padding-right: 50px;
+    }
+    
+    .huellas-modal__close {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .huellas-modal__divider {
+        margin: 0 30px;
+    }
+    
+    .huellas-modal__body {
+        padding: 20px 30px 30px;
+    }
+    
+    .huellas-modal__lugar-title {
+        font-size: 18px;
+    }
+    
+    .mapa-venezuela {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .huellas-modal__header {
+        padding: 30px 20px 15px;
+    }
+    
+    .huellas-modal__title {
+        font-size: 24px;
+    }
+    
+    .huellas-modal__divider {
+        margin: 0 20px;
+    }
+    
+    .huellas-modal__body {
+        padding: 20px;
+    }
+}

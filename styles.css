@@ -1642,19 +1642,25 @@ html, body {
 .oracion__header {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
     padding: 30px;
-    text-align: center;
     color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-.oracion__cross {
-    font-size: 48px;
-    color: var(--color-secondary);
-    margin-bottom: 15px;
+.oracion__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
 }
 
 .oracion__header h3 {
-    font-size: 18px;
-    font-weight: 500;
+    font-family: var(--font-secondary);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.5px;
 }
 
 .oracion__body {
@@ -2383,4 +2389,25 @@ html, body {
     .impacto__number {
         font-size: 40px;
     }
+    
+}
+
+/* Botón descarga novena */
+.novena__download-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    font-size: 13px;
+    text-align: center;
+    width: 100%;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border-radius: 25px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.novena__download-btn:hover {
+    background-color: var(--color-secondary-dark);
+    transform: translateY(-2px);
 }

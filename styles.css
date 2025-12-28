@@ -638,7 +638,10 @@ html, body {
 }
 
 .quick-fact__icon {
-    font-size: 24px;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .quick-fact strong {

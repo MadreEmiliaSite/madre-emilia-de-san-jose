@@ -545,6 +545,50 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// ===== LIGHTBOX DE GALERÍA =====
+const galeriaItems = document.querySelectorAll('.galeria__item');
+const galeriaModal = document.getElementById('modal-galeria');
+
+if (galeriaModal) {
+    const galeriaModalImg = document.getElementById('galeria-modal-img');
+    const galeriaModalTitle = document.getElementById('galeria-modal-title');
+    const galeriaModalDesc = document.getElementById('galeria-modal-desc');
+    const galeriaModalClose = galeriaModal.querySelector('.galeria-modal__close');
+    const galeriaModalOverlay = galeriaModal.querySelector('.galeria-modal__overlay');
+
+    // Abrir modal al hacer click en una imagen de la galería
+    galeriaItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            const title = item.querySelector('h3').textContent;
+            const desc = item.querySelector('p').textContent;
+
+            galeriaModalImg.src = img.src;
+            galeriaModalTitle.textContent = title;
+            galeriaModalDesc.textContent = desc;
+
+            galeriaModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+        });
+    });
+
+    // Función para cerrar el modal
+    const closeGaleriaModal = () => {
+        galeriaModal.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    // Eventos de cierre
+    galeriaModalClose.addEventListener('click', closeGaleriaModal);
+    galeriaModalOverlay.addEventListener('click', closeGaleriaModal);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && galeriaModal.classList.contains('active')) {
+            closeGaleriaModal();
+        }
+    });
+}
+
 // ===== MAPA INTERACTIVO DE VENEZUELA =====
 
 // Nombres de TODAS las diócesis (para mostrar tooltip en todas)

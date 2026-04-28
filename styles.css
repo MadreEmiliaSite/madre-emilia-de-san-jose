@@ -1283,7 +1283,7 @@ html, body {
    GALERÍA (DISEÑO MASONRY)
    ======================================== */
 .galeria__grid {
-    column-count: 3;
+    column-count: 2;
     column-gap: 20px;
     padding: 10px 0;
 }
@@ -1351,6 +1351,66 @@ html, body {
     z-index: 3000;
     justify-content: center;
     align-items: center;
+}
+
+.galeria__item--hidden {
+    display: none;
+}
+
+.galeria__ver-mas {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.galeria__ver-mas-btn {
+    padding: 14px 40px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.galeria__ver-mas-btn:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-2px);
+}
+
+.galeria-modal__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: var(--color-white);
+    font-size: 32px;
+    cursor: pointer;
+    padding: 10px 16px;
+    border-radius: 50%;
+    transition: var(--transition);
+    z-index: 3002;
+}
+
+.galeria-modal__nav:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.galeria-modal__nav--prev {
+    left: -70px;
+}
+
+.galeria-modal__nav--next {
+    right: -70px;
+}
+
+@media screen and (max-width: 768px) {
+    .galeria-modal__nav--prev { left: 5px; }
+    .galeria-modal__nav--next { right: 5px; }
 }
 
 .galeria-modal.active {

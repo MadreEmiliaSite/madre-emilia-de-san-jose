@@ -548,44 +548,86 @@ document.addEventListener('keydown', (e) => {
 // ===== LIGHTBOX DE GALERÍA =====
 const galeriaItems = document.querySelectorAll('.galeria__item');
 const galeriaModal = document.getElementById('modal-galeria');
+const FOTOS_VISIBLES = 9;
 
+// Ocultar fotos que pasen del límite inicial
+galeriaItems.forEach((item, index) => {
+    if (index >= FOTOS_VISIBLES) {
+        item.classList.add('galeria__item--hidden');
+    }
+});
+
+// Botón "Ver más"
+const btnVerMas = document.getElementById('btn-ver-mas');
+let mostrandoTodas = false;
+
+if (btnVerMas) {
+    btnVerMas.addEventListener('click', () => {
+        mostrandoTodas = !mostrandoTodas;
+        galeriaItems.forEach((item, index) => {
+            if (index >= FOTOS_VISIBLES) {
+                item.classList.toggle('galeria__item--hidden', !mostrandoTodas);
+            }
+        });
+        btnVerMas.textContent = mostrandoTodas ? 'Ver menos' : 'Ver todas las fotos';
+    });
+}
+
+// Lightbox con navegación
 if (galeriaModal) {
     const galeriaModalImg = document.getElementById('galeria-modal-img');
     const galeriaModalTitle = document.getElementById('galeria-modal-title');
     const galeriaModalDesc = document.getElementById('galeria-modal-desc');
     const galeriaModalClose = galeriaModal.querySelector('.galeria-modal__close');
     const galeriaModalOverlay = galeriaModal.querySelector('.galeria-modal__overlay');
+    const galeriaModalPrev = document.getElementById('galeria-prev');
+    const galeriaModalNext = document.getElementById('galeria-next');
 
-    // Abrir modal al hacer click en una imagen de la galería
-    galeriaItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const img = item.querySelector('img');
-            const title = item.querySelector('h3').textContent;
-            const desc = item.querySelector('p').textContent;
+    let currentIndex = 0;
 
-            galeriaModalImg.src = img.src;
-            galeriaModalTitle.textContent = title;
-            galeriaModalDesc.textContent = desc;
+    // Construir array con todos los datos de las imágenes
+    const galeriaData = Array.from(galeriaItems).map(item => ({
+        src: item.querySelector('img').src,
+        title: item.querySelector('h3').textContent,
+        desc: item.querySelector('p').textContent
+    }));
 
-            galeriaModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
-        });
+    function abrirFoto(index) {
+        currentIndex = index;
+        galeriaModalImg.src = galeriaData[currentIndex].src;
+        galeriaModalTitle.textContent = galeriaData[currentIndex].title;
+        galeriaModalDesc.textContent = galeriaData[currentIndex].desc;
+        galeriaModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function navegarFoto(direccion) {
+        currentIndex = (currentIndex + direccion + galeriaData.length) % galeriaData.length;
+        galeriaModalImg.src = galeriaData[currentIndex].src;
+        galeriaModalTitle.textContent = galeriaData[currentIndex].title;
+        galeriaModalDesc.textContent = galeriaData[currentIndex].desc;
+    }
+
+    galeriaItems.forEach((item, index) => {
+        item.addEventListener('click', () => abrirFoto(index));
     });
 
-    // Función para cerrar el modal
+    if (galeriaModalPrev) galeriaModalPrev.addEventListener('click', () => navegarFoto(-1));
+    if (galeriaModalNext) galeriaModalNext.addEventListener('click', () => navegarFoto(1));
+
     const closeGaleriaModal = () => {
         galeriaModal.classList.remove('active');
         document.body.style.overflow = '';
     };
 
-    // Eventos de cierre
     galeriaModalClose.addEventListener('click', closeGaleriaModal);
     galeriaModalOverlay.addEventListener('click', closeGaleriaModal);
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && galeriaModal.classList.contains('active')) {
-            closeGaleriaModal();
-        }
+        if (!galeriaModal.classList.contains('active')) return;
+        if (e.key === 'Escape') closeGaleriaModal();
+        if (e.key === 'ArrowLeft') navegarFoto(-1);
+        if (e.key === 'ArrowRight') navegarFoto(1);
     });
 }
 

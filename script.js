@@ -667,19 +667,69 @@ const diocesisData = {
         tituloModal: '<span class="huellas-modal__title-highlight">Arquidiócesis de</span> Caracas',
         lugares: [
             {
-                titulo: 'Lugar de Nacimiento',
+                titulo: '📍 Lugar de Nacimiento',
                 fecha: '7 de diciembre de 1858',
                 descripcion: 'Emilia Chapellín Istúriz nació en Caracas, en el seno de una familia católica ejemplar. Fue la novena de doce hijos.'
             },
             {
-                titulo: 'Catedral de Caracas',
+                titulo: '⛪ Catedral de Caracas',
                 fecha: '12 de enero de 1859',
                 descripcion: 'A los 36 días de nacida recibió el Sacramento del Bautismo en la Catedral de Caracas.'
             },
             {
-                titulo: 'Asilo de la Providencia',
-                fecha: '15 de enero de 1892',
-                descripcion: 'Fundó en Caracas el Asilo de la Providencia, segunda casa de la Congregación, en condiciones de pobreza heroica.'
+                titulo: '🏠 Asilo La Providencia',
+                fecha: 'Hogar para Adultos Mayores',
+                descripcion: 'Avda. San Martín, frente a la Maternidad Concepción Palacios, Caracas. Telf.: (0212) 462.67.59'
+            },
+            {
+                titulo: '🏠 Comunidad Madre Emilia',
+                fecha: 'Hogar para Adultos Mayores',
+                descripcion: 'Avda. Teherán, Montalbán – La Vega, Caracas. Telf.: (0212) 442.90.15'
+            },
+            {
+                titulo: '🏠 Residencia San José',
+                fecha: 'Casa de las Hermanas mayores',
+                descripcion: 'Avda. Teherán, Montalbán, La Vega, Caracas. Residencia para las Hermanas mayores y enfermas que ameritan atención médica.'
+            },
+            {
+                titulo: '🏠 Casa de Acogida Padre Machado',
+                fecha: 'Rehabilitación',
+                descripcion: 'Calle Cajigal Nº 48, Barrio San Andrés, El Valle, Caracas. Misión: Rehabilitación para personas en situación de calle. Telf.: (0212) 671.17.22'
+            },
+            {
+                titulo: '🏠 Hogar Nuestra Señora del Carmen',
+                fecha: 'Hogar para Adultos Mayores',
+                descripcion: 'Frente a Plaza Eugenio Mendoza, Los Chorros, Caracas. Telf.: (0212) 235.94.70'
+            },
+            {
+                titulo: '🏥 Clínica Dispensario Padre Machado',
+                fecha: 'Hospital',
+                descripcion: 'Avda. Teherán, Montalbán – La Vega, Caracas. Telf.: (0212) 442.90.30'
+            },
+            {
+                titulo: '🏫 Colegio Madre Emilia',
+                fecha: 'Colegio en Venezuela',
+                descripcion: 'Avda. Rómulo Gallegos Nº 14, Los Dos Caminos, Caracas. Telf.: (0212) 235.40.58'
+            },
+            {
+                titulo: '✝️ Casa de Retiros Madre Emilia',
+                fecha: 'Retiros y convivencias',
+                descripcion: 'Avda. Teherán, Montalbán, La Vega, Caracas. Telf.: (0212) 442.90.11'
+            },
+            {
+                titulo: '✝️ Obra del Sufragio',
+                fecha: 'Misas perpetuas',
+                descripcion: 'Avda. Teherán, Montalbán, La Vega, Caracas.'
+            },
+            {
+                titulo: '🏥 Centro de Medicina Física y Rehabilitación Madre María Isabel',
+                fecha: 'Centro de Salud',
+                descripcion: 'Avda. Teherán, Montalbán, La Vega, Caracas. Telf.: (0212) 443.84.26'
+            },
+            {
+                titulo: '✝️ Centro de Evangelización La Milagrosa',
+                fecha: 'Catequesis y evangelización',
+                descripcion: 'Carapita, Caracas.'
             }
         ]
     },
@@ -687,24 +737,124 @@ const diocesisData = {
         tituloModal: '<span class="huellas-modal__title-highlight">Diócesis de</span> La Guaira',
         lugares: [
             {
-                titulo: 'Hospital San José de Maiquetía',
-                fecha: '22 de abril de 1888',
-                descripcion: 'Se inauguró el Hospital de San José, donde Emilia comenzó su servicio a los enfermos más necesitados.'
-            },
-            {
-                titulo: 'Fundación de la Congregación',
-                fecha: '25 de septiembre de 1889',
-                descripcion: 'Junto al Padre Santiago Machado, fundó la Congregación de Hermanitas de los Pobres de Maiquetía, primera Congregación religiosa venezolana.'
-            },
-            {
-                titulo: 'Capilla del Hospital',
+                titulo: '⛪ Capilla del Hospital',
                 fecha: '30 de agosto de 1890',
                 descripcion: 'Se instaló el Santísimo Sacramento en la capilla, centro de la vida espiritual de la comunidad.'
             },
             {
-                titulo: 'Macuto - Lugar de Fallecimiento',
-                fecha: '18 de enero de 1893',
-                descripcion: 'Falleció durante la Misa, momentos después de recibir la Santa Comunión, a los 34 años de edad. Murió en ejercicio actual de amor de Dios.'
+                titulo: '⛪ Celda de la Madre Emilia de San José',
+                fecha: 'Su habitación y lugar de fallecimiento',
+                descripcion: 'Se encuentra cerca de la capilla donde reposan sus restos y suele ser visitada por peregrinos que acuden al hospital para pedir su intercesión.'
+            },
+            {
+                titulo: '✝️ La tumba de la Venerable Madre Emilia de San José',
+                fecha: 'Emilia Chapellín Istúriz',
+                descripcion: 'Patio interno/capilla del Hospital San José, Maiquetía, La Guaira.'
+            },
+            {
+                titulo: '🏥 Hospital San José de Maiquetía — Casa Cuna de la Congregación',
+                fecha: 'Hospital',
+                descripcion: 'Plaza de Pariata, Maiquetía, Dpto. Vargas. Aquí reposan los restos de los Fundadores: P. Santiago Machado y la Venerable Madre Emilia. Telf.: (0212) 332.56.90'
+            },
+            {
+                titulo: '🏫 Colegio Madre Emilia — Maiquetía',
+                fecha: 'Colegios en Venezuela',
+                descripcion: 'Calle Navarrete a Buenavista, subida a Quenepe, Maiquetía. Telf.: (0212) 332.66.05'
+            }
+        ]
+    },
+    'diocesis-barquisimeto': {
+        tituloModal: '<span class="huellas-modal__title-highlight">Arquidiócesis de</span> Barquisimeto — Lara',
+        lugares: [
+            {
+                titulo: '🏠 Hogar Infantil Madre Emilia — El Tocuyo',
+                fecha: 'Colegios en Venezuela',
+                descripcion: 'Urb. La Valvanera, El Tocuyo, Edo. Lara. Telf.: (0253) 663.22.52'
+            },
+            {
+                titulo: '🏠 Hogar San Antonio — El Tocuyo',
+                fecha: 'Hogar para Adultos Mayores',
+                descripcion: '3ª Avda. Lisandro Alvarado, El Tocuyo, Edo. Lara. Telf.: (0253) 663.20.24'
+            },
+            {
+                titulo: '🏥 Hospital San Antonio y Hogar San José — Carora',
+                fecha: 'Hospital y Hogar para Adultos Mayores',
+                descripcion: 'Calle Bolívar, Carora, Edo. Lara. Telf.: (0252) 421.53.01'
+            }
+        ]
+    },
+    'diocesis-merida': {
+        tituloModal: '<span class="huellas-modal__title-highlight">Arquidiócesis de</span> Mérida',
+        lugares: [
+            {
+                titulo: '🏫 Colegio Madre Emilia — Mérida',
+                fecha: 'Colegio en Venezuela',
+                descripcion: 'Barrio Sucre, La Otra Banda, Calle Cumaná, detrás del Colegio Arzobispo Silva, Mérida. Telf.: (0274) 244.65.47'
+            }
+        ]
+    },
+    'diocesis-maracaibo': {
+        tituloModal: '<span class="huellas-modal__title-highlight">Arquidiócesis de</span> Maracaibo',
+        lugares: [
+            {
+                titulo: '🏠 Hogar San José de La Montaña',
+                fecha: 'Hogar para Adultos Mayores',
+                descripcion: 'Calle 85, Nº 9-33, Maracaibo, Edo. Zulia. Telf.: (0261) 798.01.19'
+            }
+        ]
+    },
+    'diocesis-valencia': {
+        tituloModal: '<span class="huellas-modal__title-highlight">Diócesis de</span> Valencia — Carabobo',
+        lugares: [
+            {
+                titulo: '🏠 Beneficencia del Carmen — Puerto Cabello',
+                fecha: 'Hogar para Adultos Mayores',
+                descripcion: 'Urb. Santa Cruz, Calle 9, Las Populares, Puerto Cabello, Edo. Carabobo. Telf.: (0242) 364.55.29'
+            }
+        ]
+    },
+    'diocesis-trujillo': {
+        tituloModal: '<span class="huellas-modal__title-highlight">Diócesis de</span> Trujillo',
+        lugares: [
+            {
+                titulo: '🏠 Hogar Dr. José Gregorio Hernández — Betijoque',
+                fecha: 'Hogar para Adultos Mayores',
+                descripcion: '3ª Avda. con Calle 18, Betijoque, Edo. Trujillo. Telf.: (0271) 663.20.74'
+            }
+        ]
+    },
+    'diocesis-san-cristobal': {
+        tituloModal: '<span class="huellas-modal__title-highlight">Diócesis de</span> San Cristóbal — Táchira',
+        lugares: [
+            {
+                titulo: '🏥 Hospital San Antonio — Táriba',
+                fecha: 'Hospital',
+                descripcion: 'Calle 8, Nº 5-24, Táriba, Edo. Táchira. Telf.: (0276) 394.30.56'
+            }
+        ]
+    },
+    'diocesis-maracay': {
+        tituloModal: '<span class="huellas-modal__title-highlight">Diócesis de</span> Maracay — Aragua',
+        lugares: [
+            {
+                titulo: '🏫 Colegio Madre Emilia — La Victoria',
+                fecha: 'Colegio en Venezuela',
+                descripcion: 'Calle Libertador Sur, La Victoria, Edo. Aragua. Telf.: (0244) 322.20.32'
+            },
+            {
+                titulo: '🏠 Hogar Padre Machado — La Victoria',
+                fecha: 'Hogar para Adultos Mayores',
+                descripcion: 'Calle Candelaria Nº 63, La Victoria, Edo. Aragua. Aquí nació el P. Santiago Machado, co-fundador de la Congregación. Telf.: (0244) 321.05.19'
+            }
+        ]
+    },
+    'diocesis-los-teques': {
+        tituloModal: '<span class="huellas-modal__title-highlight">Diócesis de</span> Los Teques — Miranda',
+        lugares: [
+            {
+                titulo: '🏠 Casa Hogar Padre Machado — San Pedro de los Altos',
+                fecha: 'Hogar para Adultos Mayores',
+                descripcion: 'Frente al Barrio Andrés Bello, Vía San Pedro de los Altos, Edo. Miranda. Telf.: (0212) 378.07.62'
             }
         ]
     }
@@ -720,7 +870,18 @@ const modalClose = document.getElementById('modal-close');
 const modalOverlay = modal ? modal.querySelector('.huellas-modal__overlay') : null;
 
 // Diócesis que tienen información completa (pueden abrir modal)
-const diocesisConInfo = ['diocesis-caracas', 'diocesis-la-guaira'];
+const diocesisConInfo = [
+    'diocesis-caracas',
+    'diocesis-la-guaira',
+    'diocesis-barquisimeto',
+    'diocesis-merida',
+    'diocesis-maracaibo',
+    'diocesis-valencia',
+    'diocesis-trujillo',
+    'diocesis-san-cristobal',
+    'diocesis-maracay',
+    'diocesis-los-teques'
+];
 
 // Obtener TODAS las diócesis del mapa
 const todasLasDiocesis = document.querySelectorAll('[id^="diocesis-"]');
